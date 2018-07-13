@@ -1,4 +1,5 @@
 from tkinter import *
+import pompa
 
 root = Tk()
 
@@ -7,14 +8,11 @@ topFrame.pack()
 bottomFrame = Frame(root)
 bottomFrame.pack(side=BOTTOM)
 
-def sual():
-    print("sual")
-def suver():
-    print("suver")
 
 
-button1 = Button(topFrame, text="Su Al",bg="Green", command=sual)
-button2 = Button(topFrame, text="Su Ver",bg="red",command=suver)
+button1 = Button(topFrame, text="Su Al",bg="Green", command=pompa.pump())
+button2 = Button(topFrame, text="Su Ver",bg="red",command=pompa.depump())
+button3 = Button(topFrame, text="Stop Pumping", bg = "yellow", command = pompa.stoppump())
 
 button1.pack()
 button2.pack()
