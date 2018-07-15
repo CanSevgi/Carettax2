@@ -77,21 +77,31 @@ def reverseTurnRight():
 
 def main():
     allStop()
+    print("Allstop")
     forwardDrive()
+    print("Forward")
     sleep(5)
     reverseDrive()
+    print("reverse")
     sleep(5)
     spinLeft()
+    print("spinleft")
     sleep(5)
     forwardTurnLeft()
+    print("turnleft")
     sleep(5)
     forwardTurnRight()
+    print("turnright")
     sleep(5)
     reverseTurnLeft()
+    print("reverseturnleft")
     sleep(5)
     reverseTurnRight()
+    print("reverseturnright")
     sleep(5)
+
     allStop()
+    print("allstop")
 
 #bu kısmı anlayamadım ??? neden if var ?
 if __name__ == "__main__":
