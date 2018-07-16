@@ -16,8 +16,8 @@ def pump():
  init()
  print ("Motor1 Forward Motor2 Off")
  #Motor1 (Forward)
- gpio.output(17, True)
- gpio.output(22, False)
+ gpio.output(17, False)
+ gpio.output(22, True)
 
 #Motor2 (Off)
  gpio.output(23, False) 
@@ -28,8 +28,8 @@ def depump():
  init()
  print ("Motor1 Reverse Motor2 Off")
  #Motor 1 (Reverse)
- gpio.output(17, False)
- gpio.output(22, True)
+ gpio.output(17, True)
+ gpio.output(22, False)
 
 #Motor2 (off)
  gpio.output(23, False) 
@@ -37,11 +37,9 @@ def depump():
 
 def stoppump():
     init()
-    gpio.cleanup()
-    #Or :
     #Motor1 (Off)
-    #gpio.output(17, False)
-    #gpio.output(22, False)
+    gpio.output(17, False)
+    gpio.output(22, False)
 
     #Motor2 (Off)
     #gpio.output(23, False) 
