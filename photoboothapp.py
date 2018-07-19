@@ -41,10 +41,10 @@ class PhotoBoothApp:
 
         
     def videoLoop(self):
-        		# DISCLAIMER:
-    		# I'm not a GUI developer, nor do I even pretend to be. This
-    		# try/except statement is a pretty ugly hack to get around
-    		# a RunTime error that Tkinter throws due to threading
+        # DISCLAIMER:
+        # I'm not a GUI developer, nor do I even pretend to be. This
+        # try/except statement is a pretty ugly hack to get around
+        # a RunTime error that Tkinter throws due to threading
         try:
         	# keep looping over frames until we are instructed to stop
         	while not self.stopEvent.is_set():
@@ -71,8 +71,10 @@ class PhotoBoothApp:
         			self.panel.configure(image=image)
         			self.panel.image = image
 
-        except (RuntimeError, e):
-        	print("[INFO] caught a RuntimeError")        
+        except (RuntimeError):
+        	print("[INFO] caught a RuntimeError")
+        
+        
     def takeSnapshot(self):
     	# grab the current timestamp and use it to construct the
 	    # output path
@@ -83,6 +85,7 @@ class PhotoBoothApp:
 	    # save the file
 	    cv2.imwrite(p, self.frame.copy())
 	    print("[INFO] saved {}".format(filename))
+
     def onClose(self):
         	# set the stop event, cleanup the camera, and allow the rest of
     	# the quit process to continue

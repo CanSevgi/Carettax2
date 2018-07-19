@@ -1,6 +1,6 @@
 # import the necessary packages
 from __future__ import print_function
-from pyimagesearch.photoboothapp import PhotoBoothApp
+from photoboothapp import PhotoBoothApp
 from imutils.video import VideoStream
 import argparse
 import time
