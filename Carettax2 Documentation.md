@@ -6,6 +6,7 @@
 # Before Starting :
 
 **Pip installation**
+
 sudo apt-get install python
 sudo apt-get install python 3
 
@@ -20,6 +21,7 @@ sudo pip3 install pygame
 
 ## Gyro
 **pi**
+
 sudo apt-get install python-webpy
 sudo apt-get install python3-webpy
 
