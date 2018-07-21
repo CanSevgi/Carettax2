@@ -11,7 +11,7 @@ urls = (
 power_mgmt_1 = 0x6b
 power_mgmt_2 = 0x6c
 
-bus = smbus.SMBus(0) # or bus = smbus.SMBus(1) for Revision 2 boards
+bus = smbus.SMBus(1) # or bus = smbus.SMBus(1) for Revision 2 boards
 address = 0x68       # This is the address value read via the i2cdetect command
 
 
@@ -53,7 +53,17 @@ class index:
         accel_yout_scaled = accel_yout / 16384.0
         accel_zout_scaled = accel_zout / 16384.0
 
-        return str(get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled))+" "+str(get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled))
+        return (
+            str(get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled))
+            +" "+
+            str(get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled))
+            +" "+
+            str(accel_xout_scaled)
+            +" "+
+            str(accel_yout_scaled)
+            +" "+
+            str(accel_zout_scaled)
+            )
 
 
 if __name__ == "__main__":
