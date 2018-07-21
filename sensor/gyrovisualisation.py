@@ -2,6 +2,8 @@
 
 import pygame
 import urllib
+import tkinter
+import sys
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from math import radians
@@ -40,6 +42,10 @@ def read_values():
     myfile = f.read()
     return myfile.split(" ")
 
+def quit_callback():
+    global Done
+    Done = True
+
 def run():
     pygame.init()
     screen = pygame.display.set_mode(SCREEN_SIZE, HWSURFACE | OPENGL | DOUBLEBUF)
@@ -48,7 +54,15 @@ def run():
     clock = pygame.time.Clock()
     cube = Cube((0.0, 0.0, 0.0), (.5, .5, .7))
     angle = 0
+    font = pygame.font.Font(None, 30)
     
+
+    root = tkinter.Tk()
+    root.protocol("WM_DELETE_WINDOW",quit_callback)
+    main_dialog =  tkinter.Frame(root)
+    main_dialog.pack()
+
+
     while True:
         then = pygame.time.get_ticks()
         for event in pygame.event.get():
@@ -60,6 +74,9 @@ def run():
         values = read_values()
         x_angle = values[0]
         y_angle = values[1]
+        x_accel = values[2]
+        y_accel = values[3]
+        z_accel = values[4]
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
@@ -103,6 +120,12 @@ def run():
         glPushMatrix()
         glRotate(float(x_angle), 1, 0, 0)
         glRotate(-float(y_angle), 0, 0, 1)
+        xaccel = font.render(str(x_accel),True,pygame.color('white'))
+        yaccel = font.render(str(y_accel),True,pygame.color('white'))
+        zaccel = font.render(str(z_accel),True,pygame.color('white'))
+        screen.blit(xaccel, (50, 50))
+        screen.blit(yaccel, (50, 100))
+        screen.blit(zaccel, (50, 150))
         cube.render()
         glPopMatrix()
         pygame.display.flip()
