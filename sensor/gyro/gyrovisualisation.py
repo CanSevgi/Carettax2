@@ -2,8 +2,6 @@
 
 import pygame
 import urllib
-import Tkinter as tkinter
-import sys
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from math import radians
@@ -42,9 +40,7 @@ def read_values():
     myfile = f.read()
     return myfile.split(" ")
 
-def quit_callback():
-    global Done
-    Done = True
+
 
 def run():
     pygame.init()
@@ -54,13 +50,10 @@ def run():
     clock = pygame.time.Clock()
     cube = Cube((0.0, 0.0, 0.0), (.5, .5, .7))
     angle = 0
-    fontt = pygame.font.Font(None, 30)
+
     
 
-    root = tkinter.Tk()
-    root.protocol("WM_DELETE_WINDOW",quit_callback)
-    main_dialog =  tkinter.Frame(root)
-    main_dialog.pack()
+
 
 
     while True:
