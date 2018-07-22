@@ -67,9 +67,7 @@ def run():
         values = read_values()
         x_angle = values[0]
         y_angle = values[1]
-        x_accel = values[2]
-        y_accel = values[3]
-        z_accel = values[4]
+
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
@@ -113,12 +111,6 @@ def run():
         glPushMatrix()
         glRotate(float(x_angle), 1, 0, 0)
         glRotate(-float(y_angle), 0, 0, 1)
-        xaccel = fontt.render(str(x_accel),True,pygame.color('white'))
-        yaccel = fontt.render(str(y_accel),True,pygame.color('white'))
-        zaccel = fontt.render(str(z_accel),True,pygame.color('white'))
-        screen.blit(xaccel, (50, 50))
-        screen.blit(yaccel, (50, 100))
-        screen.blit(zaccel, (50, 150))
         cube.render()
         glPopMatrix()
         pygame.display.flip()
