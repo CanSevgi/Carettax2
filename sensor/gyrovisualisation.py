@@ -2,7 +2,7 @@
 
 import pygame
 import urllib
-import tkinter
+import Tkinter as tkinter
 import sys
 from OpenGL.GL import *
 from OpenGL.GLU import *
@@ -54,7 +54,7 @@ def run():
     clock = pygame.time.Clock()
     cube = Cube((0.0, 0.0, 0.0), (.5, .5, .7))
     angle = 0
-    font = pygame.font.Font(None, 30)
+    fontt = pygame.font.Font(None, 30)
     
 
     root = tkinter.Tk()
@@ -120,9 +120,9 @@ def run():
         glPushMatrix()
         glRotate(float(x_angle), 1, 0, 0)
         glRotate(-float(y_angle), 0, 0, 1)
-        xaccel = font.render(str(x_accel),True,pygame.color('white'))
-        yaccel = font.render(str(y_accel),True,pygame.color('white'))
-        zaccel = font.render(str(z_accel),True,pygame.color('white'))
+        xaccel = fontt.render(str(x_accel),True,pygame.color('white'))
+        yaccel = fontt.render(str(y_accel),True,pygame.color('white'))
+        zaccel = fontt.render(str(z_accel),True,pygame.color('white'))
         screen.blit(xaccel, (50, 50))
         screen.blit(yaccel, (50, 100))
         screen.blit(zaccel, (50, 150))
@@ -179,6 +179,7 @@ class Cube(object):
             glVertex(vertices[v3])
             glVertex(vertices[v4])
         glEnd()
+
 
 if __name__ == "__main__":
     run()
