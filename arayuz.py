@@ -64,9 +64,4 @@ stopallbutton.pack()
 
 
 
-
-status = Label(root, text="Nothing", bd=1,relief=SUNKEN,anchor = W)
-status.pack(side=BOTTOM,fill=X)
-
-
 root.mainloop()
