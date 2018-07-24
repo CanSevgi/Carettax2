@@ -29,6 +29,8 @@ m2button4 = Button(bottomFrame, text="25", bg = "yellow", command = speed.m2_25)
 m2button5 = Button(bottomFrame, text="0", bg = "red", command = speed.m2_0)
 m2revbutton = Button(bottomFrame, text="Reverse", bg="blue", command = speed.m2_rev)
 
+resetbutton=Button(bottomFrame, text="RESET",bg="red", command = speed.reset) 
+
 m1button1.pack()
 m1button2.pack()
 m1button3.pack()
@@ -42,6 +44,7 @@ m2button3.pack()
 m2button4.pack()
 m2button5.pack()
 m2revbutton.pack()
+resetbutton.pack()
 
 
 root.mainloop()

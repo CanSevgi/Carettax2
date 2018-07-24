@@ -85,6 +85,9 @@ def m2_rev():
         gpio.output(13,True)
         gpio.output(6,False)
 
+def reset():
+    gpio.cleanup()
+
 def set():
     #####--Motor1--#####
     gpio.output(26,True)
