@@ -5,8 +5,8 @@ import time
 def init():
  gpio.setmode(gpio.BCM)
  #Motor1
- gpio.setup(17, gpio.OUT)
- gpio.setup(22, gpio.OUT)
+ gpio.setup(17, gpio.OUT)##in 1
+ gpio.setup(22, gpio.OUT)##in 2
 
  #Motor2
  gpio.setup(23, gpio.OUT)

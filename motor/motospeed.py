@@ -5,21 +5,21 @@ gpio.setmode(gpio.BCM)
 #Motor1
 gpio.setup(26, gpio.OUT)
 gpio.setup(19, gpio.OUT)
-gpio.output(26,True)
-gpio.output(19,False)
+gpio.output(26,True) ##in1
+gpio.output(19,False) ## in2
 
-gpio.setup(21,gpio.OUT)
+gpio.setup(21,gpio.OUT)##en A
 m1=gpio.PWM(21,1000)
 m1.start(0)
 
 
 #Motor2
-gpio.setup(13, gpio.OUT)
-gpio.setup(6, gpio.OUT)
+gpio.setup(13, gpio.OUT)##in3
+gpio.setup(6, gpio.OUT) ## in4
 gpio.output(13,True)
 gpio.output(6,False)
 
-gpio.setup(27,gpio.OUT)
+gpio.setup(27,gpio.OUT)##en B
 m2=gpio.PWM(27,1000)
 m2.start(0)
 
