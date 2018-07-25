@@ -21,7 +21,7 @@ def man():
     speed.manuel2(n)
 
 #####--MOTOR 1--#####
-m1label =Label(topFrame,Text="Motor 1 \n Speed percentage :"+m)
+m1label =Label(topFrame,text="Motor 1 \n Speed percentage :")
 m1button1 = Button(topFrame, text="100",bg="Green", command=speed.m1_100)
 m1button2 = Button(topFrame, text="75",bg="yellow",command=speed.m1_75)
 m1button3 = Button(topFrame, text="50", bg = "yellow", command = speed.m1_50)
@@ -31,7 +31,7 @@ m1revbutton = Button(topFrame, text="Reverse", bg="blue", command = speed.m1_rev
 
 
 #####--MOTOR 2--#####
-m2label =Label(topFrame,Text="Motor 2 \n Speed percentage :"+n)
+m2label =Label(topFrame,text="Motor 2 \n Speed percentage :")
 m2button1 = Button(bottomFrame, text="100",bg="Green", command=speed.m2_100)
 m2button2 = Button(bottomFrame, text="75",bg="yellow",command=speed.m2_75)
 m2button3 = Button(bottomFrame, text="50", bg = "yellow", command = speed.m2_50)
@@ -58,7 +58,7 @@ m2button5.pack()
 m2revbutton.pack()
 resetbutton.pack()
 
-manuellabel = Label(bottomFrame,Text="Manuel Tab :").pack()
+manuellabel = Label(bottomFrame,text="Manuel Tab :").pack()
 m1manuel = Entry(bottomFrame,textvariable=m1var).pack()
 m2manuel = Entry(bottomFrame,textvariable=m2var).pack()
 manuelbutton = Button(bottomFrame,text="MANUEL PERCENTAGE",command = man()).pack()
