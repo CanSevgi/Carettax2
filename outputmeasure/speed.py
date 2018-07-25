@@ -54,6 +54,9 @@ def m1_rev():
         gpio.output(26,True)
         gpio.output(19,False)
         
+def manuel1(m):
+    m2.ChangeDutyCycle(m)
+    print ("M1 %"+m)
 
 ##### -- Motor2 --#####
 def m2_100():
@@ -84,6 +87,10 @@ def m2_rev():
     elif gpio.output(13,False):
         gpio.output(13,True)
         gpio.output(6,False)
+
+def manuel2(n):
+    m2.ChangeDutyCycle(n)
+    print ("M2 %"+n)
 
 def reset():
     gpio.cleanup()
