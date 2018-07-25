@@ -55,8 +55,10 @@ def m1_rev():
         gpio.output(19,False)
         
 def manuel1(m):
+    m = float(m)
     m2.ChangeDutyCycle(m)
-    print ("M1 %"+m)
+    mm = str(m)
+    print ("M1 %"+mm)
 
 ##### -- Motor2 --#####
 def m2_100():
@@ -89,8 +91,10 @@ def m2_rev():
         gpio.output(6,False)
 
 def manuel2(n):
+    n=float(n)
     m2.ChangeDutyCycle(n)
-    print ("M2 %"+n)
+    nn = str(n)
+    print ("M2 %"+nn)
 
 def reset():
     gpio.cleanup()

@@ -2,6 +2,8 @@ from tkinter import *
 import speed
 
 root = Tk()
+root.title("Carettax2 Control Panel v1.0")
+
 
 topFrame = Frame(root)
 topFrame.pack()
@@ -9,16 +11,15 @@ bottomFrame = Frame(root)
 bottomFrame.pack(side=BOTTOM)
 m1var=IntVar()
 m2var=IntVar()
-m = IntVar()
-n = IntVar()
+str m
+n = StringVar()
 status = Label(root, text="Nothing", bd=1,relief=SUNKEN,anchor = W)
 status.pack(side=BOTTOM,fill=X)
 
 def man():
-    m = m1manuel.get()
-    n = m2manuel.get()
-    speed.manuel1(m)
-    speed.manuel2(n)
+    m = m1var.get()
+    n = m2var.get()
+    return m,n
 
 #####--MOTOR 1--#####
 m1label =Label(topFrame,text="Motor 1 \n Speed percentage :")
@@ -61,5 +62,5 @@ resetbutton.pack()
 manuellabel = Label(bottomFrame,text="Manuel Tab :").pack()
 m1manuel = Entry(bottomFrame,textvariable=m1var).pack()
 m2manuel = Entry(bottomFrame,textvariable=m2var).pack()
-manuelbutton = Button(bottomFrame,text="MANUEL PERCENTAGE",command = man()).pack()
+manuelbutton = Button(bottomFrame,text="MANUEL PERCENTAGE",command = lambda:[man(),speed.manuel1(m),speed.manuel2(n)]).pack()
 root.mainloop()
