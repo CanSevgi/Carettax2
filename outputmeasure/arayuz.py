@@ -11,7 +11,6 @@ bottomFrame = Frame(root)
 bottomFrame.pack(side=BOTTOM)
 m1var=IntVar()
 m2var=IntVar()
-str m
 n = StringVar()
 status = Label(root, text="Nothing", bd=1,relief=SUNKEN,anchor = W)
 status.pack(side=BOTTOM,fill=X)
