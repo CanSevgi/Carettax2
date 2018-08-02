@@ -113,6 +113,7 @@ def manuel2(n):
 
 def reset():
     gpio.cleanup()
+    
 
 def set():
     #####--Motor1--#####

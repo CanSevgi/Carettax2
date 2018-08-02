@@ -33,3 +33,13 @@ def ManSet(m1,m2,m3,m4,m5,m6):
     m6 = str(m6)
 
     print (" M1 : %"+ m1 +"\n M2 : %"+ m2 +"\n M3 : %"+ m3 +"\n M4 : %"+ m4 +"\n M5 : %"+ m5 +"\n M6 : %"+ m6)
+
+def solaci(n):
+    #####Servo açı ayarlama kodları buraya#####
+    n=str(n)
+    print("Sol Motor "+n+"°")
+
+def sagaci(n):
+    #####Servo açı ayarlama kodları buraya#####
+    n=str(n)
+    print("Sağ Motor" +n+"°")
