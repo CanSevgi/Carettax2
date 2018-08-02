@@ -61,13 +61,28 @@ def m1_0():
     print("M2 Off")
 
 def m1_rev():
-    if gpio.output(26,True):
-        gpio.output(26,False)
-        gpio.output(19,True)
-        print("M1 Reverse")
-    elif gpio.output(26,False):
-        gpio.output(26,True)
-        gpio.output(19,False)
+    gpio.cleanup()
+    gpio.setmode(gpio.BCM)
+    #Motor1
+    gpio.setup(26, gpio.OUT)
+    gpio.setup(19, gpio.OUT)
+    gpio.output(26,False) ##in1
+    gpio.output(19,True) ## in2
+
+    gpio.setup(21,gpio.OUT)##en A
+    m1=gpio.PWM(21,1000)
+    m1.start(0)
+
+
+    #Motor2
+    gpio.setup(13, gpio.OUT)##in3
+    gpio.setup(6, gpio.OUT) ## in4
+    gpio.output(13,False)
+    gpio.output(6,True)
+
+    gpio.setup(27,gpio.OUT)##en B
+    m2=gpio.PWM(27,1000)
+    m2.start(0)
         
 def manuel1(m):
     m=int(m)
@@ -113,7 +128,24 @@ def manuel2(n):
 
 def reset():
     gpio.cleanup()
-    
+    gpio.setmode(gpio.BCM)
+    #Motor1
+    gpio.setup(26, gpio.OUT)
+    gpio.setup(19, gpio.OUT)
+    gpio.output(26,True) ##in1
+    gpio.output(19,False) ## in2
+    gpio.setup(21,gpio.OUT)##en A
+    m1=gpio.PWM(21,1000)
+    m1.start(0)
+    #Motor2
+    gpio.setup(13, gpio.OUT)##in3
+    gpio.setup(6, gpio.OUT) ## in4
+    gpio.output(13,True)
+    gpio.output(6,False)
+    gpio.setup(27,gpio.OUT)##en B
+    m2=gpio.PWM(27,1000)
+    m2.start(0)
+
 
 def set():
     #####--Motor1--#####
