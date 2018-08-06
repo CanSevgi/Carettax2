@@ -1,10 +1,9 @@
 import sys
 from motor import *
 if sys.version_info[0]==2 :
-    from Tkinter import *
+    from Tkinter import *  
 else :
     from tkinter import *
-from tkinter import *
 
 
 
@@ -30,9 +29,120 @@ cmv4=IntVar()
 cmv5=IntVar()
 cmv6=IntVar()
 
+def configwindow():
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    m1en = config.get("MOTORS","m1en")
+    m2en = config.get("MOTORS","m2en")
+    m3en = config.get("MOTORS","m3en")
+    m4en = config.get("MOTORS","m4en")
+    m5en = config.get("MOTORS","m5en")
+    m6en = config.get("MOTORS","m6en")
+
+    m1in1 = config.get("MOTORS","m1in1")
+    m2in1 = config.get("MOTORS","m2in1")
+    m3in1 = config.get("MOTORS","m3in1")
+    m4in1 = config.get("MOTORS","m4in1")
+    m5in1 = config.get("MOTORS","m5in1")
+    m6in1 = config.get("MOTORS","m6in1")
+
+    m1in2 = config.get("MOTORS","m1in2")
+    m2in2 = config.get("MOTORS","m2in2")
+    m3in2 = config.get("MOTORS","m3in2")
+    m4in2 = config.get("MOTORS","m4in2")
+    m5in2 = config.get("MOTORS","m5in2")
+    m6in2 = config.get("MOTORS","m6in2")
+
+    def confset():
+        m1en = m1en.get()
+        m2en = m2en.get()
+        m3en = m3en.get()
+        m4en = m4en.get()
+        m5en = m5en.get()
+        m6en = m6en.get()
+
+        m1in1 = m1in1_in.get()
+        m2in1 = m2in1_in.get()
+        m3in1 = m3in1_in.get()
+        m4in1 = m4in1_in.get()
+        m5in1 = m5in1_in.get()
+        m6in1 = m6in1_in.get()
+
+        m1in1 = m1in1_in.get()
+        m2in1 = m2in1_in.get()
+        m3in1 = m3in1_in.get()
+        m4in1 = m4in1_in.get()
+        m5in1 = m5in1_in.get()
+        m6in1 = m6in1_in.get()
+
+        config.set('MOTORS', 'm1en', m1en)
+        config.set('MOTORS', 'm2en', m2en)
+        config.set('MOTORS', 'm3en', m3en)
+        config.set('MOTORS', 'm4en', m4en)
+        config.set('MOTORS', 'm5en', m5en)
+        config.set('MOTORS', 'm6en', m6en)
+
+        config.set('MOTORS', 'm1in1', m1in1)
+        config.set('MOTORS', 'm2in1', m2in1)
+        config.set('MOTORS', 'm3in1', m3in1)
+        config.set('MOTORS', 'm4in1', m4in1)
+        config.set('MOTORS', 'm5in1', m5in1)
+        config.set('MOTORS', 'm6in1', m6in1)
+
+        config.set('MOTORS', 'm1in2', m1in2)
+        config.set('MOTORS', 'm2in2', m2in2)
+        config.set('MOTORS', 'm3in2', m3in2)
+        config.set('MOTORS', 'm4in2', m4in2)
+        config.set('MOTORS', 'm5in2', m5in2)
+        config.set('MOTORS', 'm6in2', m6in2)
+
+        with open('config.ini', 'w') as configfile:
+            config.write(configfile)
+    
+
+    
+    
+
+    confi = Toplevel(root)
+    confi.resizable(width = FALSE, height = FALSE)
+    ###### TODO: Açılacak olan config penceresinin konumunu ayarla tekrar !! #####
+    confi.geometry("+50+200")
+    toplabel = Label(confi, text="Enable Pin          In 1          In 2").pack()
+    m1label = Label(confi,text="Motor1").pack()
+    var_m1en = Entry(confi,textvariable=m1en).pack(side = LEFT)
+    var_m1in1 = Entry(confi,textvariable=m1in1).pack(side = LEFT)
+    var_m1in2 = Entry(confi,textvariable=m1in2).pack(side = LEFT)
+
+    m2label = Label(confi,text="Motor2").pack()
+    var_m2en = Entry(confi,textvariable=m2en).pack(side = LEFT)
+    var_m2in1 = Entry(confi,textvariable=m2in1).pack(side = LEFT)
+    var_m2in2 = Entry(confi,textvariable=m2in2).pack(side = LEFT)
+    
+    m3label = Label(confi,text="Motor3").pack()
+    var_m3en = Entry(confi,textvariable=m3en).pack(side = LEFT)
+    var_m3in1 = Entry(confi,textvariable=m3in1).pack(side = LEFT)
+    var_m3in2 = Entry(confi,textvariable=m3in2).pack(side = LEFT)
+
+    m4label = Label(confi,text="Motor4").pack()
+    var_m4en = Entry(confi,textvariable=m4en).pack(side = LEFT)
+    var_m4in1 = Entry(confi,textvariable=m4in1).pack(side = LEFT)
+    var_m4in2 = Entry(confi,textvariable=m4in2).pack(side = LEFT)
+
+    m5label = Label(confi,text="Motor5").pack()
+    var_m5en = Entry(confi,textvariable=m5en).pack(side = LEFT)
+    var_m5in1 = Entry(confi,textvariable=m5in1).pack(side = LEFT)
+    var_m5in2 = Entry(confi,textvariable=m5in2).pack(side = LEFT)
+
+    m6label = Label(confi,text="Motor6").pack()
+    var_m6en = Entry(confi,textvariable=m6en).pack(side = LEFT)
+    var_m6in1 = Entry(confi,textvariable=m6in1).pack(side = LEFT)
+    var_m6in2 = Entry(confi,textvariable=m6in2).pack(side = LEFT)
+
+    confibutton = Button(confi,text="Set Pins",bg="Green",command = confset).pack()
+
 
 def manuelwindow():
-    def deneme () :
+    def ManGet () :
         m1man=m1var.get()
         m2man=m2var.get()
         m3man=m3var.get()
@@ -50,7 +160,7 @@ def manuelwindow():
     m6var=IntVar(root, value= 999)
     manuel=Toplevel(root)
     manuel.resizable(width=FALSE, height=FALSE)
-    ######Açılacak olan manuel penceresinin konumunu ayarla tekrar !! #####
+    ###### TODO: Açılacak olan manuel penceresinin konumunu ayarla tekrar !! #####
     manuel.geometry("+50+200")
     m1label = Label(manuel,text="Motor1").pack()
     m1man = Entry(manuel,textvariable=m1var).pack()
@@ -64,7 +174,7 @@ def manuelwindow():
     m5man = Entry(manuel,textvariable=m5var).pack()
     m6label = Label(manuel,text="Motor6").pack()
     m6man = Entry(manuel,textvariable=m6var).pack()
-    manuelbutton = Button(manuel,text="MANUEL PERCENTAGE",bg="Green",command = deneme).pack()
+    manuelbutton = Button(manuel,text="MANUEL PERCENTAGE",bg="Green",command = ManGet).pack()
     resetbutton = Button(manuel,text="RESET",bg="Red",command = reset).pack()
 
 
@@ -72,6 +182,9 @@ def manuelwindow():
 
 manuelbutton = Button(text="Manuel",command=manuelwindow)
 manuelbutton.place(relx=0, rely=0.95)
+
+confibutton = Button(text="Configuration",command=configwindow)
+confibutton.place(relx=0.3,rely=0.95)
 
 revlabel = Label(root, text="Reverse").place(relx=0.17,rely=0.01)
 
