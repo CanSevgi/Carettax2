@@ -65,6 +65,7 @@ def manuelwindow():
     m6label = Label(manuel,text="Motor6").pack()
     m6man = Entry(manuel,textvariable=m6var).pack()
     manuelbutton = Button(manuel,text="MANUEL PERCENTAGE",bg="Green",command = deneme).pack()
+    resetbutton = Button(manuel,text="RESET",bg="Red",command = reset).pack()
 
 
 
