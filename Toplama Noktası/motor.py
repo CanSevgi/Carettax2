@@ -1,4 +1,4 @@
-#import RPi.GPIO as gpio
+import RPi.GPIO as gpio
 import time
 try:
     import configparser as configparser
@@ -14,15 +14,6 @@ m3en = int(config.get("MOTORS","m3en"))
 m4en = int(config.get("MOTORS","m4en"))
 m5en = int(config.get("MOTORS","m5en"))
 m6en = int(config.get("MOTORS","m6en"))
-
-### FIXME: config.ini açılıp veri okunduğuna dair onay :
-
-print(m1en)
-print(m2en)
-print(m3en)
-print(m4en)
-print(m5en)
-print(m6en)
 
 
 m1in1 = int(config.get("MOTORS","m1in1"))
@@ -204,6 +195,7 @@ def reset():
     gpio.setup(m6en,gpio.OUT)
     m6=gpio.PWM(m6en,1000)
     m6.start(0)
+    print("reset")
 
 
 def solaci(n):
