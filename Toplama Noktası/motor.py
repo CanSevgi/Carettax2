@@ -1,9 +1,11 @@
-import RPi.GPIO as gpio
+#import RPi.GPIO as gpio
 import time
 try:
     import configparser as configparser
 except ImportError:
     import ConfigParser as configparser
+
+#print("motor.py imported")
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -95,32 +97,31 @@ m6.start(0)
 
 
 
-
 def ManSet(m1,m2,m3,m4,m5,m6):
-    m1=float(m1)
-    m2=float(m2)
-    m3=float(m3)
-    m4=float(m4)
-    m5=float(m5)
-    m6=float(m6)
+    m1=int(m1)
+    m2=int(m2)
+    m3=int(m3)
+    m4=int(m4)
+    m5=int(m5)
+    m6=int(m6)
 
     if m1 != 999:
-        m1.ChangeDutyCycle(m1)
+        #m1.ChangeDutyCycle(m1)
         print("M1 : " +str(m1))
     if m2 != 999 :
-        m2.ChangeDutyCycle(m2)
+        #m2.ChangeDutyCycle(m2)
         print("M2 : " +str(m2))
     if m3 != 999:
-        m3.ChangeDutyCycle(m3)
+        #m3.ChangeDutyCycle(m3)
         print("M3 : " +str(m3))
     if m4 != 999:
-        m4.ChangeDutyCycle(m4)
+        #m4.ChangeDutyCycle(m4)
         print("M4 : " +str(m4))
     if m5 != 999:
-        m5.ChangeDutyCycle(m5)
+        #m5.ChangeDutyCycle(m5)
         print("M5 : " +str(m5))
     if m6 != 999:
-        m6.ChangeDutyCycle(m6)
+        #m6.ChangeDutyCycle(m6)
         print("M6 : " +str(m6))
 
     m1 = str(m1)
@@ -197,6 +198,96 @@ def reset():
     m6.start(0)
     print("reset")
 
+def m1scale (val):
+    x=int(val)
+    m1.ChangeDutyCycle(x)
+    print ("M1 changed to :" + str(val))
+
+def m2scale (val):
+    x=int(val)
+    m2.ChangeDutyCycle(x)
+    print ("M2 changed to :" + str(val))
+
+def m3scale (val):
+    x=int(val)
+    m3.ChangeDutyCycle(x)
+    print ("M3 changed to :" + str(val))
+
+def m4scale (val):
+    x=int(val)
+    m4.ChangeDutyCycle(x)
+    print ("M4 changed to :" + str(val))
+
+def m5scale (val):
+    x=int(val)
+    m5.ChangeDutyCycle(x)
+    print ("M5 changed to :" + str(val))
+
+def m6scale (val):
+    x=int(val)
+    m6.ChangeDutyCycle(x)
+    print ("M6 changed to :" + str(val))
+
+
+def motor1_reverse () :
+    gpio.output(m1in1,False)
+    gpio.output(m1in2,True)
+    print("M1 REVERSED")
+
+def motor1_forward () :
+    gpio.output(m1in1,True)
+    gpio.output(m1in2,False)
+    print("M1 FORWARD")
+
+def motor2_reverse () :
+    gpio.output(m2in1,False)
+    gpio.output(m2in2,True)
+    print("M2 REVERSED")
+
+def motor2_forward () :
+    gpio.output(m2in1,True)
+    gpio.output(m2in2,False)
+    print("M2 FORWARD")
+
+def motor3_reverse () :
+    gpio.output(m3in1,False)
+    gpio.output(m3in2,True)
+    print("M3 REVERSED")
+
+def motor3_forward () :
+    gpio.output(m3in1,True)
+    gpio.output(m3in2,False)
+    print("M3 FORWARD")
+
+def motor4_reverse () :
+    gpio.output(m4in1,False)
+    gpio.output(m4in2,True)
+    print("M4 REVERSED")
+
+def motor4_forward () :
+    gpio.output(m4in1,True)
+    gpio.output(m4in2,False)
+    print("M4 FORWARD")
+
+def motor5_reverse () :
+    gpio.output(m5in1,False)
+    gpio.output(m5in2,True)
+    print("M5 REVERSED")
+
+def motor5_forward () :
+    gpio.output(m5in1,True)
+    gpio.output(m5in2,False)
+    print("M5 FORWARD")
+
+def motor6_reverse () :
+    gpio.output(m6in1,False)
+    gpio.output(m6in2,True)
+    print("M6 REVERSED")
+
+def motor6_forward () :
+    gpio.output(m6in1,True)
+    gpio.output(m6in2,False)
+    print("M6 FORWARD")
 
 def solaci(n):
     #####Servo açı ayarlama kodları buraya#####
