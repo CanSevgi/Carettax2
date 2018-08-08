@@ -1,7 +1,8 @@
 import os
 import glob
 import time
- 
+ # GPIO 4 
+ # tek sensör için kullanılıyor
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
  
