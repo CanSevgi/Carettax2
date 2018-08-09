@@ -97,13 +97,14 @@ gpio.setup(m6en,gpio.OUT)
 m6=gpio.PWM(m6en,1000)
 m6.start(0)
 
-#Sol orta servo
-gpio.setup(18,gpio.OUT)
-s1 = gpio.PWM(18,50)
+#TODO: Servo pinlerini config'e ekle
+# #Sol orta servo
+# gpio.setup(18,gpio.OUT)
+# s1 = gpio.PWM(18,50)
 
-#Sağ Orta Servo
-gpio.setup(23,gpio.OUT)
-s2 = gpio.PWM(23,50)
+# #Sağ Orta Servo
+# gpio.setup(23,gpio.OUT)
+# s2 = gpio.PWM(23,50)
 
 
 def ManSet(m1,m2,m3,m4,m5,m6):
@@ -309,28 +310,30 @@ def motor6_forward () :
 
 
 def solservo(x):
-    cyc=x/18
-    s1.start(cyc)
-    s1.ChangeDutyCycle(cyc)
-    time.sleep(0.5)
-    s1.stop()
-    n=str(x)
-    print("Sol Motor "+n+"°")
-
+    print("Sol Servo" + str(x) + "Derece")     
+    # cyc=x/18
+    # s1.start(cyc)
+    # s1.ChangeDutyCycle(cyc)
+    # time.sleep(0.5)
+    # s1.stop()
+    # n=str(x)
+    # print("Sol Motor "+n+"°")
+# 
 def sagservo(x):
-    cyc=x/18
-    s2.start(cyc)
-    s2.ChangeDutyCycle(cyc)
-    time.sleep(0.5)
-    s2.stop()
-    n=str(x)
-    print("Sol Motor "+n+"°")
-
+    print("Sağ Servo" + str(x) + "Derece")     
+    # cyc=x/18
+    # s2.start(cyc)
+    # s2.ChangeDutyCycle(cyc)
+    # time.sleep(0.5)
+    # s2.stop()
+    # n=str(x)
+    # print("Sol Motor "+n+"°")
+# 
 
 
 ##KEY BINDING FUNCTIONS
 
-def sola_don():
+def sola_don(self):
     motor1_reverse()
     motor3_reverse()
     motor5_reverse()
@@ -341,7 +344,7 @@ def sola_don():
     m5.ChangeDutyCycle(25)
     m6.ChangeDutyCycle(25)
 
-def sol_ileri():
+def sol_ileri(self):
     motor1_reverse()
     m1.ChangeDutyCycle(50)
     m2.ChangeDutyCycle(100)
@@ -350,7 +353,7 @@ def sol_ileri():
     m5.ChangeDutyCycle(25)
     m6.ChangeDutyCycle(25)
 
-def saga_don():
+def saga_don(self):
     motor2_reverse()
     motor4_reverse()
     m1.ChangeDutyCycle(25)
@@ -360,7 +363,7 @@ def saga_don():
     m5.ChangeDutyCycle(25)
     m6.ChangeDutyCycle(25)
 
-def sag_ileri():
+def sag_ileri(self):
     motor2_reverse()
     m1.ChangeDutyCycle(100)
     m2.ChangeDutyCycle(50)
@@ -369,7 +372,7 @@ def sag_ileri():
     m5.ChangeDutyCycle(25)
     m6.ChangeDutyCycle(25)
 
-def all_forward_50():
+def all_forward_50(self):
     m1.ChangeDutyCycle(50)
     m2.ChangeDutyCycle(50)
     m3.ChangeDutyCycle(50)
@@ -377,7 +380,7 @@ def all_forward_50():
     m5.ChangeDutyCycle(50)
     m6.ChangeDutyCycle(50)
 
-def all_backward_50():
+def all_backward_50(self):
     motor1_reverse()
     motor2_reverse()
     motor3_reverse()
@@ -391,7 +394,7 @@ def all_backward_50():
     m5.ChangeDutyCycle(50)
     m6.ChangeDutyCycle(50)
 
-def all_forward_100 ():
+def all_forward_100 (self):
     m1.ChangeDutyCycle(100)
     m2.ChangeDutyCycle(100)
     m3.ChangeDutyCycle(100)
@@ -399,7 +402,7 @@ def all_forward_100 ():
     m5.ChangeDutyCycle(100)
     m6.ChangeDutyCycle(100)    
 
-def all_backward_100():
+def all_backward_100(self):
     motor1_reverse()
     motor2_reverse()
     motor3_reverse()
@@ -414,7 +417,7 @@ def all_backward_100():
     m6.ChangeDutyCycle(100)
 
 
-def stop6motor():
+def stop6motor(self):
     motor1_forward()
     motor2_forward()
     motor3_forward()
