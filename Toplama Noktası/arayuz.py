@@ -12,15 +12,85 @@ root = Tk()
 root.state("zoomed")
 root.title("Carettax2 Control Panel")
 
-### Key Bindings ###
-""" 
-def deneme(self):
-    print("deneme")
-root.bind("<Escape>",deneme)
-"""
+#TODO: Stat bar düzenle
 stat ="None"
 
 
+### Key Bindings ###
+
+def disable_nokeypanel():
+    cm1.config(state=DISABLED)
+    cm2.config(state=DISABLED)
+    cm3.config(state=DISABLED)
+    cm4.config(state=DISABLED)
+    cm5.config(state=DISABLED)
+    cm6.config(state=DISABLED)
+    bar1.config(state=DISABLED)
+    bar2.config(state=DISABLED)
+    bar3.config(state=DISABLED)
+    bar4.config(state=DISABLED)
+    bar5.config(state=DISABLED)
+    bar6.config(state=DISABLED)
+    sagorta0.config(state=DISABLED)
+    sagorta30.config(state=DISABLED)
+    sagorta45.config(state=DISABLED)
+    sagorta60.config(state=DISABLED)
+    sagorta90.config(state=DISABLED)
+    solorta0.config(state=DISABLED)
+    solorta30.config(state=DISABLED)
+    solorta45.config(state=DISABLED)
+    solorta60.config(state=DISABLED)
+    solorta90.config(state=DISABLED)
+    manuelbutton.config(state=DISABLED)
+
+def enable_nokeypanel():
+    cm1.config(state=NORMAL)
+    cm2.config(state=NORMAL)
+    cm3.config(state=NORMAL)
+    cm4.config(state=NORMAL)
+    cm5.config(state=NORMAL)
+    cm6.config(state=NORMAL)
+    bar1.config(state=NORMAL)
+    bar2.config(state=NORMAL)
+    bar3.config(state=NORMAL)
+    bar4.config(state=NORMAL)
+    bar5.config(state=NORMAL)
+    bar6.config(state=NORMAL)
+    sagorta0.config(state=NORMAL)
+    sagorta30.config(state=NORMAL)
+    sagorta45.config(state=NORMAL)
+    sagorta60.config(state=NORMAL)
+    sagorta90.config(state=NORMAL)
+    solorta0.config(state=NORMAL)
+    solorta30.config(state=NORMAL)
+    solorta45.config(state=NORMAL)
+    solorta60.config(state=NORMAL)
+    solorta90.config(state=NORMAL)
+    manuelbutton.config(state=NORMAL)
+
+
+def keys():
+    if keyenable.get() == 1:
+        disable_nokeypanel()
+        root.bind("<KeyPress-a>",sola_don)
+        root.bind("<KeyRelease-a>", stop6motor)
+        root.bind("<KeyPress-w>",all_forward_50)
+        root.bind("<KeyRelease-w>",stop6motor)
+        root.bind("<KeyPress-W>",all_forward_100)
+        root.bind("<KeyRelease-W>",stop6motor)
+        root.bind("<KeyPress-s>",all_backward_50)
+        root.bind("<KeyRelease-s>",stop6motor)
+        root.bind("<KeyPress-S>",all_backward_100)
+        root.bind("<KeyRelease-S>",stop6motor)
+        root.bind("<KeyPress-d>",saga_don)
+        root.bind("<KeyRelease-d>",stop6motor)
+        root.bind("<KeyPress-q>",sol_ileri)
+        root.bind("<KeyRelease-q>", stop6motor)
+        root.bind("<KeyPress-e>",sag_ileri)
+        root.bind("<KeyRelease-e>", stop6motor)
+        root.bind("<KeyPress-space>",stop6motor)
+    elif keyenable.get() == 0:
+        enable_nokeypanel()
 
 def reverse_motor1():
     if cmv1.get() == 1:
@@ -254,54 +324,83 @@ def manuelwindow():
 
 
 
+
+
+revlabel = Label(root, text="Reverse").place(relx=0.17,rely=0.01)
+
+
+m1label = Label(root,text="Sol Ön (1)").place(relx=0.03,rely=0.01)
+bar1 = Scale(root, from_ =0, to_=100,resolution=25,orient = HORIZONTAL,length=300,command = m1scale)
+bar1.place(relx=0.01,rely=0.03)
+cmv1=IntVar()
+cm1 = Checkbutton(root,variable=cmv1,command=reverse_motor1)
+cm1.place(relx=0.17,rely=0.045)
+
+m2label = Label(root,text="Sağ Ön (2)").place(relx=0.03,rely=0.09)
+bar2 = Scale(root, from_ =0, to_=100,resolution=25,orient = HORIZONTAL,length=300,command = m2scale)
+bar2.place(relx=0.01,rely=0.11)
+cmv2=IntVar()
+cm2 = Checkbutton(root,variable=cmv2,command=reverse_motor2)
+cm2.place(relx=0.17,rely=0.125)
+
+m3label = Label(root,text="Sol Orta (3)").place(relx=0.03,rely=0.17)
+bar3 = Scale(root, from_ =0, to_=100,resolution=25,orient = HORIZONTAL,length=300,command = m3scale)
+bar3.place(relx=0.01,rely=0.19)
+cmv3=IntVar()
+cm3 = Checkbutton(root,variable=cmv3,command=reverse_motor3)
+cm3.place(relx=0.17,rely=0.205)
+solorta0 = Button(text= "0°",command= lambda: solservo(0))
+solorta0.place(relx=0.07,rely=0.17)
+solorta30 = Button(text= "30°",command= lambda: solservo(30))
+solorta30.place(relx=0.08,rely=0.17)
+solorta45 = Button(text= "45°",command= lambda: solservo(45))
+solorta45.place(relx=0.095,rely=0.17)
+solorta60 = Button(text= "60°",command= lambda: solservo(60))
+solorta60.place(relx=0.11,rely=0.17)
+solorta90 = Button(text= "90°",command= lambda: solservo(90))
+solorta90.place(relx=0.125,rely=0.17)
+
+m4label = Label(root,text="Sağ Orta (4)").place(relx=0.03,rely=0.25)
+bar4 = Scale(root, from_ =0, to_=100,resolution=25,orient = HORIZONTAL,length=300,command = m4scale)
+bar4.place(relx=0.01,rely=0.27)
+cmv4=IntVar()
+cm4 = Checkbutton(root,variable=cmv4,command=reverse_motor4)
+cm4.place(relx=0.17,rely=0.285)
+sagorta0 = Button(text= "0°",command= lambda: sagservo(0))
+sagorta0.place(relx=0.07,rely=0.25)
+sagorta30 = Button(text= "30°",command= lambda: sagservo(30))
+sagorta30.place(relx=0.08,rely=0.25)
+sagorta45 = Button(text= "45°",command= lambda: sagservo(45))
+sagorta45.place(relx=0.095,rely=0.25)
+sagorta60 = Button(text= "60°",command= lambda: sagservo(60))
+sagorta60.place(relx=0.11,rely=0.25)
+sagorta90 = Button(text= "90°",command= lambda: sagservo(90))
+sagorta90.place(relx=0.125,rely=0.25)
+
+m5label = Label(root,text="Sol Arka (5)").place(relx=0.03,rely=0.33)
+bar5 = Scale(root, from_ =0, to_=100,resolution=25,orient = HORIZONTAL,length=300,command = m5scale)
+bar5.place(relx=0.01,rely=0.35)
+cmv5=IntVar()
+cm5 = Checkbutton(root,variable=cmv5,command=reverse_motor5)
+cm5.place(relx=0.17,rely=0.365)
+
+m6label = Label(root,text="Sağ Arka (6)").place(relx=0.03,rely=0.41)
+bar6 = Scale(root, from_ =0, to_=100,resolution=25,orient = HORIZONTAL,length=300,command = m6scale)
+bar6.place(relx=0.01,rely=0.43)
+cmv6=IntVar()
+cm6 = Checkbutton(root,variable=cmv6,command=reverse_motor6)
+cm6.place(relx=0.17,rely=0.445)
+
 manuelbutton = Button(text="Manuel",command=manuelwindow)
 manuelbutton.place(relx=0, rely=0.95)
 
 confibutton = Button(text="Configuration",command=configwindow)
 confibutton.place(relx=0.3,rely=0.95)
 
-revlabel = Label(root, text="Reverse").place(relx=0.17,rely=0.01)
+keyenable = IntVar()
+keyenablecheckbox = Checkbutton(root,variable=keyenable,command=keys).place(relx = 0, rely = 0.75)
 
 
-m1label = Label(root,text="Sol Ön (1)").place(relx=0.03,rely=0.01)
-bar1 = Scale(root, from_ =0, to_=100,resolution=25,orient = HORIZONTAL,length=300,command = m1scale).place(relx=0.01,rely=0.03)
-cmv1=IntVar()
-cm1 = Checkbutton(root,variable=cmv1,command=reverse_motor1).place(relx=0.17,rely=0.045)
-
-m2label = Label(root,text="Sağ Ön (2)").place(relx=0.03,rely=0.09)
-bar2 = Scale(root, from_ =0, to_=100,resolution=25,orient = HORIZONTAL,length=300,command = m2scale).place(relx=0.01,rely=0.11)
-cmv2=IntVar()
-cm2 = Checkbutton(root,variable=cmv2,command=reverse_motor2).place(relx=0.17,rely=0.125)
-
-m3label = Label(root,text="Sol Orta (3)").place(relx=0.03,rely=0.17)
-bar3 = Scale(root, from_ =0, to_=100,resolution=25,orient = HORIZONTAL,length=300,command = m3scale).place(relx=0.01,rely=0.19)
-cmv3=IntVar()
-cm3 = Checkbutton(root,variable=cmv3,command=reverse_motor3).place(relx=0.17,rely=0.205)
-solorta0 = Button(text= "0°",command= lambda: solservo(0)).place(relx=0.07,rely=0.17)
-solorta30 = Button(text= "30°",command= lambda: solservo(30)).place(relx=0.08,rely=0.17)
-solorta45 = Button(text= "45°",command= lambda: solservo(45)).place(relx=0.095,rely=0.17)
-solorta60 = Button(text= "60°",command= lambda: solservo(60)).place(relx=0.11,rely=0.17)
-solorta90 = Button(text= "90°",command= lambda: solservo(90)).place(relx=0.125,rely=0.17)
-
-m4label = Label(root,text="Sağ Orta (4)").place(relx=0.03,rely=0.25)
-bar4 = Scale(root, from_ =0, to_=100,resolution=25,orient = HORIZONTAL,length=300,command = m4scale).place(relx=0.01,rely=0.27)
-cmv4=IntVar()
-cm4 = Checkbutton(root,variable=cmv4,command=reverse_motor4).place(relx=0.17,rely=0.285)
-sagorta0 = Button(text= "0°",command= lambda: sagservo(0)).place(relx=0.07,rely=0.25)
-sagorta30 = Button(text= "30°",command= lambda: sagservo(30)).place(relx=0.08,rely=0.25)
-sagorta45 = Button(text= "45°",command= lambda: sagservo(45)).place(relx=0.095,rely=0.25)
-sagorta60 = Button(text= "60°",command= lambda: sagservo(60)).place(relx=0.11,rely=0.25)
-sagorta90 = Button(text= "90°",command= lambda: sagservo(90)).place(relx=0.125,rely=0.25)
-
-m5label = Label(root,text="Sol Arka (5)").place(relx=0.03,rely=0.33)
-bar5 = Scale(root, from_ =0, to_=100,resolution=25,orient = HORIZONTAL,length=300,command = m5scale).place(relx=0.01,rely=0.35)
-cmv5=IntVar()
-cm5 = Checkbutton(root,variable=cmv5,command=reverse_motor5).place(relx=0.17,rely=0.365)
-
-m6label = Label(root,text="Sağ Arka (6)").place(relx=0.03,rely=0.41)
-bar6 = Scale(root, from_ =0, to_=100,resolution=25,orient = HORIZONTAL,length=300,command = m6scale).place(relx=0.01,rely=0.43)
-cmv6=IntVar()
-cm6 = Checkbutton(root,variable=cmv6,command=reverse_motor6).place(relx=0.17,rely=0.445)
 
 status = Label(root, text=stat, bd=1,relief=SUNKEN,anchor = W)
 status.pack(side=BOTTOM,fill=X)

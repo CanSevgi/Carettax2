@@ -5,6 +5,8 @@ try:
 except ImportError:
     import ConfigParser as configparser
 
+
+
 print("motor.py imported without error")
 
 config = configparser.ConfigParser()
@@ -95,6 +97,13 @@ gpio.setup(m6en,gpio.OUT)
 m6=gpio.PWM(m6en,1000)
 m6.start(0)
 
+#Sol orta servo
+gpio.setup(18,gpio.OUT)
+s1 = gpio.PWM(18,50)
+
+#Sağ Orta Servo
+gpio.setup(23,gpio.OUT)
+s2 = gpio.PWM(23,50)
 
 
 def ManSet(m1,m2,m3,m4,m5,m6):
@@ -196,6 +205,15 @@ def reset():
     gpio.setup(m6en,gpio.OUT)
     m6=gpio.PWM(m6en,1000)
     m6.start(0)
+
+    #Sol orta servo
+    gpio.setup(18,gpio.OUT)
+    s1 = gpio.PWM(18,50)
+
+    #Sağ Orta Servo
+    gpio.setup(23,gpio.OUT)
+    s2 = gpio.PWM(23,50)
+
     print("reset")
 
 def m1scale (val):
@@ -289,12 +307,124 @@ def motor6_forward () :
     gpio.output(m6in2,False)
     print("M6 FORWARD")
 
-def solservo(n):
-    #####Servo açı ayarlama kodları buraya#####
-    n=str(n)
+
+def solservo(x):
+    cyc=x/18
+    s1.start(cyc)
+    s1.ChangeDutyCycle(cyc)
+    time.sleep(0.5)
+    s1.stop()
+    n=str(x)
     print("Sol Motor "+n+"°")
 
-def sagservo(n):
-    #####Servo açı ayarlama kodları buraya#####
-    n=str(n)
-    print("Sağ Motor" +n+"°")
+def sagservo(x):
+    cyc=x/18
+    s2.start(cyc)
+    s2.ChangeDutyCycle(cyc)
+    time.sleep(0.5)
+    s2.stop()
+    n=str(x)
+    print("Sol Motor "+n+"°")
+
+
+
+##KEY BINDING FUNCTIONS
+
+def sola_don():
+    motor1_reverse()
+    motor3_reverse()
+    motor5_reverse()
+    m1.ChangeDutyCycle(50)
+    m2.ChangeDutyCycle(25)
+    m3.ChangeDutyCycle(100)
+    m4.ChangeDutyCycle(100)
+    m5.ChangeDutyCycle(25)
+    m6.ChangeDutyCycle(25)
+
+def sol_ileri():
+    motor1_reverse()
+    m1.ChangeDutyCycle(50)
+    m2.ChangeDutyCycle(100)
+    m3.ChangeDutyCycle(100)
+    m4.ChangeDutyCycle(100)
+    m5.ChangeDutyCycle(25)
+    m6.ChangeDutyCycle(25)
+
+def saga_don():
+    motor2_reverse()
+    motor4_reverse()
+    m1.ChangeDutyCycle(25)
+    m2.ChangeDutyCycle(50)
+    m3.ChangeDutyCycle(100)
+    m4.ChangeDutyCycle(100)
+    m5.ChangeDutyCycle(25)
+    m6.ChangeDutyCycle(25)
+
+def sag_ileri():
+    motor2_reverse()
+    m1.ChangeDutyCycle(100)
+    m2.ChangeDutyCycle(50)
+    m3.ChangeDutyCycle(100)
+    m4.ChangeDutyCycle(100)
+    m5.ChangeDutyCycle(25)
+    m6.ChangeDutyCycle(25)
+
+def all_forward_50():
+    m1.ChangeDutyCycle(50)
+    m2.ChangeDutyCycle(50)
+    m3.ChangeDutyCycle(50)
+    m4.ChangeDutyCycle(50)
+    m5.ChangeDutyCycle(50)
+    m6.ChangeDutyCycle(50)
+
+def all_backward_50():
+    motor1_reverse()
+    motor2_reverse()
+    motor3_reverse()
+    motor4_reverse()
+    motor5_reverse()
+    motor6_reverse()
+    m1.ChangeDutyCycle(50)
+    m2.ChangeDutyCycle(50)
+    m3.ChangeDutyCycle(50)
+    m4.ChangeDutyCycle(50)
+    m5.ChangeDutyCycle(50)
+    m6.ChangeDutyCycle(50)
+
+def all_forward_100 ():
+    m1.ChangeDutyCycle(100)
+    m2.ChangeDutyCycle(100)
+    m3.ChangeDutyCycle(100)
+    m4.ChangeDutyCycle(100)
+    m5.ChangeDutyCycle(100)
+    m6.ChangeDutyCycle(100)    
+
+def all_backward_100():
+    motor1_reverse()
+    motor2_reverse()
+    motor3_reverse()
+    motor4_reverse()
+    motor5_reverse()
+    motor6_reverse()
+    m1.ChangeDutyCycle(100)
+    m2.ChangeDutyCycle(100)
+    m3.ChangeDutyCycle(100)
+    m4.ChangeDutyCycle(100)
+    m5.ChangeDutyCycle(100)
+    m6.ChangeDutyCycle(100)
+
+
+def stop6motor():
+    motor1_forward()
+    motor2_forward()
+    motor3_forward()
+    motor4_forward()
+    motor5_forward()
+    motor6_forward()
+    
+    m1.ChangeDutyCycle(0)
+    m2.ChangeDutyCycle(0)
+    m3.ChangeDutyCycle(0)
+    m4.ChangeDutyCycle(0)
+    m5.ChangeDutyCycle(0)
+    m6.ChangeDutyCycle(0)
