@@ -1,11 +1,11 @@
-#import RPi.GPIO as gpio
+import RPi.GPIO as gpio
 import time
 try:
     import configparser as configparser
 except ImportError:
     import ConfigParser as configparser
 
-#print("motor.py imported")
+print("motor.py imported without error")
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -106,22 +106,22 @@ def ManSet(m1,m2,m3,m4,m5,m6):
     m6=int(m6)
 
     if m1 != 999:
-        #m1.ChangeDutyCycle(m1)
+        m1.ChangeDutyCycle(m1)
         print("M1 : " +str(m1))
     if m2 != 999 :
-        #m2.ChangeDutyCycle(m2)
+        m2.ChangeDutyCycle(m2)
         print("M2 : " +str(m2))
     if m3 != 999:
-        #m3.ChangeDutyCycle(m3)
+        m3.ChangeDutyCycle(m3)
         print("M3 : " +str(m3))
     if m4 != 999:
-        #m4.ChangeDutyCycle(m4)
+        m4.ChangeDutyCycle(m4)
         print("M4 : " +str(m4))
     if m5 != 999:
-        #m5.ChangeDutyCycle(m5)
+        m5.ChangeDutyCycle(m5)
         print("M5 : " +str(m5))
     if m6 != 999:
-        #m6.ChangeDutyCycle(m6)
+        m6.ChangeDutyCycle(m6)
         print("M6 : " +str(m6))
 
     m1 = str(m1)
@@ -289,12 +289,12 @@ def motor6_forward () :
     gpio.output(m6in2,False)
     print("M6 FORWARD")
 
-def solaci(n):
+def solservo(n):
     #####Servo açı ayarlama kodları buraya#####
     n=str(n)
     print("Sol Motor "+n+"°")
 
-def sagaci(n):
+def sagservo(n):
     #####Servo açı ayarlama kodları buraya#####
     n=str(n)
     print("Sağ Motor" +n+"°")
