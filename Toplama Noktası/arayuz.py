@@ -170,6 +170,8 @@ def configwindow():
     m4in2 = IntVar(root,value=config.get("MOTORS","m4in2"))
     m5in2 = IntVar(root,value=config.get("MOTORS","m5in2"))
     m6in2 = IntVar(root,value=config.get("MOTORS","m6in2"))
+    s1 = IntVar(root,value=config.get("MOTORS","s1"))
+    s2 = IntVar(root,value=config.get("MOTORS","s2"))
     
     def restart_program():
         importlib.reload(motor)
@@ -201,6 +203,9 @@ def configwindow():
             xm5in2 = m5in2.get()
             xm6in2 = m6in2.get()
 
+            xs1 = s1.get()
+            xs2 = s2.get()
+
             config.set('MOTORS', 'm1en', str(xm1en))
             config.set('MOTORS', 'm2en', str(xm2en))
             config.set('MOTORS', 'm3en', str(xm3en))
@@ -221,6 +226,9 @@ def configwindow():
             config.set('MOTORS', 'm4in2', str(xm4in2))
             config.set('MOTORS', 'm5in2', str(xm5in2))
             config.set('MOTORS', 'm6in2', str(xm6in2))
+
+            config.set("MOTORS","s1",str(xs1))
+            config.set("MOTORS","s2",str(xs2))            
 
             with open('config.ini', 'w') as configfile:
                 config.write(configfile)
@@ -248,8 +256,11 @@ def configwindow():
     fourthFrame.pack()
     fifthFrame = Frame(confi)
     fifthFrame.pack()
+    sixthframe=Frame(confi)
+    sixthframe.pack()
     lastFrame = Frame(confi)
     lastFrame.pack()
+
 
     toplabel = Label(firstFrame, text="     Enable Pin                           In 1                                     In 2").pack()
     m1label = Label(firstFrame,text="Motor1").pack(side = LEFT)
@@ -277,10 +288,15 @@ def configwindow():
     var_m5in1 = Entry(fifthFrame,textvariable=m5in1).pack(side = LEFT)
     var_m5in2 = Entry(fifthFrame,textvariable=m5in2).pack(side = LEFT)
 
-    m6label = Label(lastFrame,text="Motor6").pack(side = LEFT)
-    var_m6en = Entry(lastFrame,textvariable=m6en).pack(side = LEFT)
-    var_m6in1 = Entry(lastFrame,textvariable=m6in1).pack(side = LEFT)
-    var_m6in2 = Entry(lastFrame,textvariable=m6in2).pack(side = LEFT)
+    m6label = Label(sixthframe,text="Motor6").pack(side = LEFT)
+    var_m6en = Entry(sixthframe,textvariable=m6en).pack(side = LEFT)
+    var_m6in1 = Entry(sixthframe,textvariable=m6in1).pack(side = LEFT)
+    var_m6in2 = Entry(sixthframe,textvariable=m6in2).pack(side = LEFT)
+
+    servolabel = Label(lastFrame,text="     Sol Servo     Sağ Servo").pack()
+    var_s1 = Entry(lastFrame,textvariable=s1).pack(side=LEFT)
+    var_s1 = Entry(lastFrame,textvariable=s2).pack(side=LEFT)
+
 
     confibutton = Button(confi,text="Set Pins",bg="Green",command = confset).pack()
 

@@ -34,6 +34,9 @@ m4in2 = int(config.get("MOTORS","m4in2"))
 m5in2 = int(config.get("MOTORS","m5in2"))
 m6in2 = int(config.get("MOTORS","m6in2"))
 
+ss1 = int(config.get("MOTORS","s1"))
+ss2 = int(config.get("MOTORS","s2"))
+
 
 gpio.setmode(gpio.BCM)
 #Motor1
@@ -98,13 +101,15 @@ m6=gpio.PWM(m6en,1000)
 m6.start(0)
 
 #TODO: Servo pinlerini config'e ekle
-# #Sol orta servo
-# gpio.setup(18,gpio.OUT)
-# s1 = gpio.PWM(18,50)
+#Sol orta servo
+gpio.setup(ss1,gpio.OUT)
+s1 = gpio.PWM(ss1,50)
+s1.start(0)
 
-# #Sağ Orta Servo
-# gpio.setup(23,gpio.OUT)
-# s2 = gpio.PWM(23,50)
+#Sağ Orta Servo
+gpio.setup(ss2,gpio.OUT)
+s2 = gpio.PWM(ss2,50)
+s2.start(0)
 
 
 def ManSet(m1,m2,m3,m4,m5,m6):
@@ -208,12 +213,12 @@ def reset():
     m6.start(0)
 
     #Sol orta servo
-    gpio.setup(18,gpio.OUT)
-    s1 = gpio.PWM(18,50)
+    gpio.setup(ss1,gpio.OUT)
+    s1 = gpio.PWM(ss1,50)
 
     #Sağ Orta Servo
-    gpio.setup(23,gpio.OUT)
-    s2 = gpio.PWM(23,50)
+    gpio.setup(ss2,gpio.OUT)
+    s2 = gpio.PWM(ss2,50)
 
     print("reset")
 
@@ -310,25 +315,19 @@ def motor6_forward () :
 
 
 def solservo(x):
-    print("Sol Servo" + str(x) + "Derece")     
-    # cyc=x/18
-    # s1.start(cyc)
-    # s1.ChangeDutyCycle(cyc)
-    # time.sleep(0.5)
-    # s1.stop()
-    # n=str(x)
-    # print("Sol Motor "+n+"°")
-# 
+    print("Sol Servo" + str(x) + "Derece")  
+    cyc = (int(x) * 10)/180
+
+    s1.ChangeDutyCycle(cyc)
+    time.sleep(0.5)
+ 
 def sagservo(x):
     print("Sağ Servo" + str(x) + "Derece")     
-    # cyc=x/18
-    # s2.start(cyc)
-    # s2.ChangeDutyCycle(cyc)
-    # time.sleep(0.5)
-    # s2.stop()
-    # n=str(x)
-    # print("Sol Motor "+n+"°")
-# 
+
+    cyc = (int(x) * 10)/180
+
+    s2.ChangeDutyCycle(cyc)
+    time.sleep(0.5)
 
 
 ##KEY BINDING FUNCTIONS
