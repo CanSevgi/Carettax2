@@ -4,8 +4,8 @@ import time
 try:
       GPIO.setmode(GPIO.BOARD)### DIKKAT BOARD PINLERI !!! ###
 
-      PIN_TRIGGER = 7
-      PIN_ECHO = 11
+      PIN_TRIGGER = 12 #gpio 18
+      PIN_ECHO = 11 #gpio 17
 
       GPIO.setup(PIN_TRIGGER, GPIO.OUT)
       GPIO.setup(PIN_ECHO, GPIO.IN)
@@ -14,7 +14,7 @@ try:
 
       print "Waiting for sensor to settle"
 
-      time.sleep(2)
+      time.sleep(0.5)
 
       print "Calculating distance"
 
@@ -23,6 +23,7 @@ try:
       time.sleep(0.00001)
 
       GPIO.output(PIN_TRIGGER, GPIO.LOW)
+      pulse_start_time = time.time()
 
       while GPIO.input(PIN_ECHO)==0:
             pulse_start_time = time.time()
