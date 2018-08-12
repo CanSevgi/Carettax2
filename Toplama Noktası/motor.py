@@ -103,13 +103,13 @@ m6.start(0)
 #TODO: Servo pinlerini config'e ekle
 #Sol orta servo
 gpio.setup(ss1,gpio.OUT)
-s1 = gpio.PWM(ss1,50)
-s1.start(0)
+s1 = gpio.PWM(ss1,100)
+
 
 #Sağ Orta Servo
 gpio.setup(ss2,gpio.OUT)
-s2 = gpio.PWM(ss2,50)
-s2.start(0)
+s2 = gpio.PWM(ss2,100)
+
 
 
 def ManSet(m1,m2,m3,m4,m5,m6):
@@ -214,11 +214,11 @@ def reset():
 
     #Sol orta servo
     gpio.setup(ss1,gpio.OUT)
-    s1 = gpio.PWM(ss1,50)
+    s1 = gpio.PWM(ss1,100)
 
     #Sağ Orta Servo
     gpio.setup(ss2,gpio.OUT)
-    s2 = gpio.PWM(ss2,50)
+    s2 = gpio.PWM(ss2,100)
 
     print("reset")
 
@@ -316,18 +316,20 @@ def motor6_forward () :
 
 def solservo(x):
     print("Sol Servo" + str(x) + "Derece")  
-    cyc = (int(x) * 10)/180
-
+    cyc = (int(x) * 20)/180 
+    s1.start(0)
     s1.ChangeDutyCycle(cyc)
     time.sleep(0.5)
+    s1.ChangeDutyCycle(0)
  
 def sagservo(x):
     print("Sağ Servo" + str(x) + "Derece")     
-
-    cyc = (int(x) * 10)/180
-
+    cyc = (int(x) * 20)/180 
+    s2.start(0)
     s2.ChangeDutyCycle(cyc)
     time.sleep(0.5)
+    s2.ChangeDutyCycle(0)
+    
 
 
 ##KEY BINDING FUNCTIONS
