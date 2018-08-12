@@ -5,19 +5,21 @@ servoPIN = 18
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(servoPIN, GPIO.OUT)
 
-p = GPIO.PWM(servoPIN, 50) # GPIO 18 for PWM with 50Hz
-p.start(0.1) # Initialization - bu kısım ilk çalışma için şart
+p = GPIO.PWM(servoPIN, 100) # GPIO 18 for PWM with 50Hz
+ # Initialization - bu kısım ilk çalışma için şart
 
 def servo(acı):
-    cyclle = (int(acı) * 10)/180 #calculation of the cycle
-
+    cyclle = (int(acı) * 20)/180 #calculation of the cycle
+    p.start(0)
     p.ChangeDutyCycle(cyclle)
     time.sleep(0.5)
+    p.ChangeDutyCycle(0)
 
 try:
     while True:
         acı = input("enter acı")
         servo(acı)
+        
 except KeyboardInterrupt:
-    p.stop()
+
     GPIO.cleanup()
