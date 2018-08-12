@@ -130,9 +130,9 @@ def reverse_motor4():
 
 def reverse_motor5():
     if cmv5.get() == 1:
-        motor5_reverse
+        motor5_reverse()
     elif cmv5.get() == 0:
-        motor5_forward
+        motor5_forward()
     else :
         print("No Data from Reverse Motor5 Checkbox !")
 
