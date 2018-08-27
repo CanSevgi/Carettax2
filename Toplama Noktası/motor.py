@@ -7,8 +7,6 @@ except ImportError:
 
 
 
-print("motor.py imported without error")
-
 config = configparser.ConfigParser()
 config.read('config.ini')
 
@@ -37,7 +35,7 @@ m6in2 = int(config.get("MOTORS","m6in2"))
 ss1 = int(config.get("MOTORS","s1"))
 ss2 = int(config.get("MOTORS","s2"))
 
-
+#FIXME: 
 gpio.setmode(gpio.BCM)
 #Motor1
 gpio.setup(m1in1, gpio.OUT)
