@@ -1,16 +1,28 @@
 **Board Pinleri Yazılacak
 
-## Pi1 (Can)
+## Pi1
 27 
 28
 29
 
 
-## Pi2 (Furkan)
+## Pi2
+#basınç
+GPIO 2 - SDA
+GPIO 3 - SCL
+#uzaklık
+GPIO 26 - Trig1
+GPIO 19 - Echo1
+GPIO 13 - Trig2
+GPIO 6 - Echo2
+GPIO 21 - Trig3
+GPIO 20 - Echo3
+#servo
+GPIO 5 - servo1
+GPIO 12 - servo2
 
 
-
-## Pi3 (Onur)
+## Pi3
 GPIO 21 - motor1 enable
 GPIO 20 - motor2 enable
 GPIO 16 - motor3 enable
@@ -35,8 +47,3 @@ GPIO 18 - Servo 1
 GPIO 23 - Servo 2
 
 GPIO 4 - Sıcaklık Sensörü 1-2
-
-## Pi4 (İlayda)
-
-
-
