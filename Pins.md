@@ -20,6 +20,13 @@ GPIO 20 - Echo3
 #servo
 GPIO 5 - servo1
 GPIO 12 - servo2
+#arduino uno
+3.3V - VCC
+GND - GND
+Pin 11 - DIN(MOSI)
+Pin 12 - DOUT(MISO)
+Pin 13 - SCLK
+Pin 9 - MCLK
 
 
 ## Pi3
