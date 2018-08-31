@@ -5,17 +5,17 @@ try:
 except ImportError:
     import ConfigParser as configparser
 
-pi1 = pigpio.pi("169.254.160.93")#MotorPi
+pi1 = gpio.pi("169.254.160.93")#MotorPi
 if not pi1.connected:
     print ("Pi1 Not Connected")
 
-pi2 = pigpio.pi("169.254.34.191") #ServerPi
-if not pi2.connected:
-    print ("Pi2 Not Connected")
+# pi2 = gpio.pi("169.254.34.191") #ServerPi
+# if not pi2.connected:
+#     print ("Pi2 Not Connected")
 
-pi3 = pigpio.pi(".....") # CameraPi
-if not pi3.connected:
-    print ("Pi3 Not Connected")
+# pi3 = gpio.pi(".....") # CameraPi
+# if not pi3.connected:
+#     print ("Pi3 Not Connected")
 
 
 config = configparser.ConfigParser()
@@ -45,7 +45,7 @@ m6in2 = int(config.get("MOTORS","m6in2"))
 
 ss1 = int(config.get("MOTORS","s1"))
 ss2 = int(config.get("MOTORS","s2"))
-
+camserv = 17
 
 #Motor1
 pi1.set_mode(m1in1,gpio.OUTPUT)
@@ -55,18 +55,18 @@ pi1.write(m1in1,1)
 pi1.write(m1in2,0)
 
 pi1.set_mode(m1en,gpio.OUTPUT)
-pi1.set_PWM_range(m1en,2000)
+pi1.set_PWM_range(m1en,1000)
 pi1.set_PWM_dutycycle(m1en,0)
 
 #Motor2
 pi1.set_mode(m2in1,gpio.OUTPUT)
 pi1.set_mode(m2in2,gpio.OUTPUT)
 
-pi1.write(m2in1,1)
+pi1.write(m2in1,)1)
 pi1.write(m2in2,0)
 
 pi1.set_mode(m2en,gpio.OUTPUT)
-pi1.set_PWM_range(m2en,2000)
+pi1.set_PWM_range(m2en,1000)
 pi1.set_PWM_dutycycle(m2en,0)
 
 #Motor3
@@ -77,7 +77,7 @@ pi1.write(m3in1,1)
 pi1.write(m3in2,0)
 
 pi1.set_mode(m3en,gpio.OUTPUT)
-pi1.set_PWM_range(m3en,2000)
+pi1.set_PWM_range(m3en,1000)
 pi1.set_PWM_dutycycle(m3en,0)
 
 #Motor4
@@ -88,7 +88,7 @@ pi1.write(m4in1,1)
 pi1.write(m4in2,0)
 
 pi1.set_mode(m4en,gpio.OUTPUT)
-pi1.set_PWM_range(m4en,2000)
+pi1.set_PWM_range(m4en,1000)
 pi1.set_PWM_dutycycle(m4en,0)
 
 #Motor5
@@ -99,7 +99,7 @@ pi1.write(m5in1,1)
 pi1.write(m5in2,0)
 
 pi1.set_mode(m5en,gpio.OUTPUT)
-pi1.set_PWM_range(m5en,2000)
+pi1.set_PWM_range(m5en,1000)
 pi1.set_PWM_dutycycle(m5en,0)
 
 #Motor6
@@ -110,7 +110,7 @@ pi1.write(m6in1,1)
 pi1.write(m6in2,0)
 
 pi1.set_mode(m6en,gpio.OUTPUT)
-pi1.set_PWM_range(m6en,2000)
+pi1.set_PWM_range(m6en,1000)
 pi1.set_PWM_dutycycle(m6en,0)
 
 #FIXME: SAG VE SOL SERVO PİNLERİNİ TANIMLA
@@ -232,6 +232,11 @@ def reset():
     pi1.set_PWM_dutycycle(m6en,0)
 
     #FIXME: SERVOLARSIN SET'I EKLENECEK
+    pi1.set_mode(ss1,gpio.OUTPUT)
+    pi1.set_servo_pulsewidth(ss1,500)
+
+    pi1.set_mode(ss2,gpio.OUTPUT)
+    pi1.set_servo_pulsewidth(ss2,500)
     print("reset")
 
 
@@ -328,21 +333,15 @@ def motor6_forward () :
     print("M6 FORWARD")
 
 #FIXME:SERVO KODLARI EKLENECEK
-# def solservo(x):
-#     print("Sol Servo" + str(x) + "Derece")  
-#     cyc = (int(x) * 20)/180 
-#     s1.start(0)
-#     s1.ChangeDutyCycle(cyc)
-#     time.sleep(0.5)
-#     s1.ChangeDutyCycle(0)
+def solservo(x):
+    print("Sol Servo" + str(x) + "Derece")
+    xx=int(x)     
+    pi1.set_servo_pulsewidth(ss2,xx)
  
-# def sagservo(x):
-#     print("Sağ Servo" + str(x) + "Derece")     
-#     cyc = (int(x) * 20)/180 
-#     s2.start(0)
-#     s2.ChangeDutyCycle(cyc)
-#     time.sleep(0.5)
-#     s2.ChangeDutyCycle(0)
+def sagservo(x):
+    print("Sağ Servo" + str(x) + "Derece")
+    xx=int(x)     
+    pi1.set_servo_pulsewidth(ss1,xx)
 
 
 
@@ -452,4 +451,14 @@ def stop6motor(self):
     pi1.set_PWM_dutycycle(m4en,0)
     pi1.set_PWM_dutycycle(m5en,0)
     pi1.set_PWM_dutycycle(m6en,0)
+
+def kamerasaga(self):
+    camservpulsewidth = pi1.get_servo_pulsewidth(camserv)
+    if camservpulsewidth <= 2500:
+        camservpulsewidth += 25
+
+def kamerasola(self):
+    camservpulsewidth = pi1.get_servo_pulsewidth(camserv)
+    if camservpulsewidth >= 500 :
+        camservpulsewidth -= 25
 

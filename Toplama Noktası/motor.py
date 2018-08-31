@@ -1,4 +1,4 @@
-import RPi.GPIO as gpio
+import pigpio as gpio
 import time
 try:
     import configparser as configparser
