@@ -143,14 +143,23 @@ void loop()
   Serial.print(PCOMP); 
   Serial.println(" mbar"); 
 
+  float h;
+
+  if (PCOMP < 1045){
+    h = PCOMP - 982,5;
+  } else {
+    h = PCOMP - 981;
+  }
+
   // p = h * d * g calculation of water depth
-  float p = PCOMP;
-  float g = 9.80665;
-  float d = 1.0;
-  float h = p / ( d * g * 1000 );
+  //float p = PCOMP;
+  //float g = 9.80665;
+  //float d = 1.0;
+  //float h = p / ( d * g * 1000 );
+  
   Serial.print("water depth = ");
   Serial.print(h);
-  Serial.println(" meter");
+  Serial.println(" cm");
  
   const long dT2 = dT - ((dT >> 7 * dT >> 7) >> 3); 
   const float TEMPCOMP = (200 + (dT2*(c6+100) >>11))/10.0; 
