@@ -12,11 +12,9 @@ p = pi.set_PWM_frequency(servoPIN,100) #p = GPIO.PWM(servoPIN, 100)
 
 def servo(acı):
     cyclle = (int(acı) * 255)/180 #calculation of the cycle
-    #p.start(0)
-    #p.ChangeDutyCycle(cyclle)
     pi.set_PWM_dutycycle(servoPIN,cyclle)
     time.sleep(0.5)
-    #p.ChangeDutyCycle(0)
+
 
 try:
     while True:

@@ -1,6 +1,6 @@
 import sys, os,importlib
-from motor import *
-import motor
+from yenimotor import *
+import yenimotor
 if sys.version_info[0]==2 :
     from Tkinter import *
     from Tkinter import messagebox  
@@ -89,6 +89,9 @@ def keys():
         root.bind("<KeyPress-e>",sag_ileri)
         root.bind("<KeyRelease-e>", stop6motor)
         root.bind("<KeyPress-space>",stop6motor)
+        root.bind("<KeyPress-Right>",kamerasaga)
+        #root.bind("<KeyRelease-Right",#####)
+        root.bind("<KeyPress-Left>",kamerasola)
     elif keyenable.get() == 0:
         enable_nokeypanel()
 
@@ -365,15 +368,15 @@ bar3.place(relx=0.01,rely=0.19)
 cmv3=IntVar()
 cm3 = Checkbutton(root,variable=cmv3,command=reverse_motor3)
 cm3.place(relx=0.17,rely=0.205)
-solorta0 = Button(text= "0°",command= lambda: solservo(0))
+solorta0 = Button(text= "0°",command= lambda: solservo(500))
 solorta0.place(relx=0.07,rely=0.17)
-solorta30 = Button(text= "30°",command= lambda: solservo(30))
+solorta30 = Button(text= "30°",command= lambda: solservo(650))
 solorta30.place(relx=0.08,rely=0.17)
-solorta45 = Button(text= "45°",command= lambda: solservo(45))
+solorta45 = Button(text= "45°",command= lambda: solservo(800))
 solorta45.place(relx=0.095,rely=0.17)
-solorta60 = Button(text= "60°",command= lambda: solservo(60))
+solorta60 = Button(text= "60°",command= lambda: solservo(925))
 solorta60.place(relx=0.11,rely=0.17)
-solorta90 = Button(text= "90°",command= lambda: solservo(90))
+solorta90 = Button(text= "90°",command= lambda: solservo(1200))
 solorta90.place(relx=0.125,rely=0.17)
 
 m4label = Label(root,text="Sağ Orta (4)").place(relx=0.03,rely=0.25)
@@ -382,15 +385,15 @@ bar4.place(relx=0.01,rely=0.27)
 cmv4=IntVar()
 cm4 = Checkbutton(root,variable=cmv4,command=reverse_motor4)
 cm4.place(relx=0.17,rely=0.285)
-sagorta0 = Button(text= "0°",command= lambda: sagservo(0))
+sagorta0 = Button(text= "0°",command= lambda: sagservo(500))
 sagorta0.place(relx=0.07,rely=0.25)
-sagorta30 = Button(text= "30°",command= lambda: sagservo(30))
+sagorta30 = Button(text= "30°",command= lambda: sagservo(650))
 sagorta30.place(relx=0.08,rely=0.25)
-sagorta45 = Button(text= "45°",command= lambda: sagservo(45))
+sagorta45 = Button(text= "45°",command= lambda: sagservo(800))
 sagorta45.place(relx=0.095,rely=0.25)
-sagorta60 = Button(text= "60°",command= lambda: sagservo(60))
+sagorta60 = Button(text= "60°",command= lambda: sagservo(925))
 sagorta60.place(relx=0.11,rely=0.25)
-sagorta90 = Button(text= "90°",command= lambda: sagservo(90))
+sagorta90 = Button(text= "90°",command= lambda: sagservo(1200))
 sagorta90.place(relx=0.125,rely=0.25)
 
 m5label = Label(root,text="Sol Arka (5)").place(relx=0.03,rely=0.33)
@@ -410,12 +413,75 @@ cm6.place(relx=0.17,rely=0.445)
 manuelbutton = Button(text="Manuel",command=manuelwindow)
 manuelbutton.place(relx=0, rely=0.95)
 
+#FIXME: İşlevsiz buton - raspileri kapatıp tekrar açsın
+resetpibutton = Button(text="Restart all system", bg = "RED")
+resetpibutton.place (relx = 0.15,rely = 0.95)
+
+
 confibutton = Button(text="Configuration",command=configwindow)
 confibutton.place(relx=0.3,rely=0.95)
 
+keyenabletext = Label(root,text="Enable keyboard controls :").place(relx=0.01,rely = 0.50)
 keyenable = IntVar()
-keyenablecheckbox = Checkbutton(root,variable=keyenable,command=keys).place(relx = 0, rely = 0.75)
+keyenablecheckbox = Checkbutton(root,variable=keyenable,command=keys).place(relx = 0.09, rely = 0.50)
 
+kameratext = Label(root, text=" KAMERA " , font = "Arial 18 bold").place(relx = 0.06,rely = 0.55)
+
+
+
+#Seperator 
+Label(root,text="|").place(relx=0.2,rely = 0)
+Label(root,text="|").place(relx=0.2,rely = 0.02)
+Label(root,text="|").place(relx=0.2,rely = 0.04)
+Label(root,text="|").place(relx=0.2,rely = 0.06)
+Label(root,text="|").place(relx=0.2,rely = 0.08)
+Label(root,text="|").place(relx=0.2,rely = 0.10)
+Label(root,text="|").place(relx=0.2,rely = 0.12)
+Label(root,text="|").place(relx=0.2,rely = 0.14)
+Label(root,text="|").place(relx=0.2,rely = 0.16)
+Label(root,text="|").place(relx=0.2,rely = 0.18)
+Label(root,text="|").place(relx=0.2,rely = 0.20)
+Label(root,text="|").place(relx=0.2,rely = 0.22)
+Label(root,text="|").place(relx=0.2,rely = 0.24)
+Label(root,text="|").place(relx=0.2,rely = 0.26)
+Label(root,text="|").place(relx=0.2,rely = 0.28)
+Label(root,text="|").place(relx=0.2,rely = 0.30)
+Label(root,text="|").place(relx=0.2,rely = 0.32)
+Label(root,text="|").place(relx=0.2,rely = 0.34)
+Label(root,text="|").place(relx=0.2,rely = 0.36)
+Label(root,text="|").place(relx=0.2,rely = 0.38)
+Label(root,text="|").place(relx=0.2,rely = 0.30)
+Label(root,text="|").place(relx=0.2,rely = 0.40)
+Label(root,text="|").place(relx=0.2,rely = 0.42)
+Label(root,text="|").place(relx=0.2,rely = 0.44)
+Label(root,text="|").place(relx=0.2,rely = 0.46)
+Label(root,text="|").place(relx=0.2,rely = 0.48)
+Label(root,text="|").place(relx=0.2,rely = 0.40)
+Label(root,text="|").place(relx=0.2,rely = 0.42)
+Label(root,text="|").place(relx=0.2,rely = 0.44)
+Label(root,text="|").place(relx=0.2,rely = 0.46)
+Label(root,text="|").place(relx=0.2,rely = 0.48)
+Label(root,text="|").place(relx=0.2,rely = 0.50)
+
+#Orta Panel (Sensör)
+sıcaklıktext = Label(root, text=" SICAKLIK " , font = "Arial 18 bold").place(relx = 0.32,rely = 0.02)
+sıcaklık1 = Label(root,text="Sıcaklık 1 : .... ").place(relx = 0.27, rely = 0.06)
+sıcaklık2 = Label(root,text="Sıcaklık 2 : ....").place(relx = 0.41, rely = 0.06)
+sıcaklık1ort = Label(root,text="Sıcaklık 1 Son 5 data ortalaması : ....").place(relx = 0.21, rely = 0.09)
+sıcaklık2ort = Label(root,text="Sıcaklık 2 Son 5 data ortalaması : ....").place(relx = 0.35, rely = 0.09)
+sıcaklıktotalort = Label(root,text ="Sıcaklık 2 Net Ortalama : ....").place(relx=0.30,rely=0.12)
+
+derinliktext = Label(root, text=" DERINLIK " , font = "Arial 18 bold").place(relx = 0.32,rely = 0.20)
+derinlikanlık = Label(root,text="Anlık Derinlik : .... ").place(relx = 0.27, rely = 0.25)
+derinikort = Label(root,text="3 Veri Ortalaması : .... ").place(relx = 0.38, rely = 0.25)
+
+uzaklıktext = Label(root, text=" UZAKLIK " , font = "Arial 18 bold").place(relx = 0.32,rely = 0.33)
+soluzaklık = Label(root,text="Sol Uzaklık : .... ").place(relx = 0.27, rely = 0.38)
+saguzaklık = Label(root,text="Sağ Uzaklık : .... ").place(relx = 0.38, rely = 0.38)
+onuzaklık = Label(root,text="Ön Uzaklık   : .... ").place(relx = 0.27, rely = 0.41)
+altuzaklık =Label(root,text="Arka Uzaklık : .... ").place(relx = 0.38, rely = 0.41)
+
+gyrotext = Label(root, text=" GYRO " , font = "Arial 18 bold").place(relx = 0.32,rely = 0.55)
 
 
 status = Label(root, text=stat, bd=1,relief=SUNKEN,anchor = W)
