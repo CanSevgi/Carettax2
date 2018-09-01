@@ -47,10 +47,11 @@ GPIO 9 - motor4 in1
 GPIO 10 - motor4 in2
 GPIO 22 - motor5 in1
 GPIO 27 - motor5 in2
-GPIO 17 - motor6 in1
+GPIO 7 - motor6 in1
 GPIO 8 - motor6 in2
 
 GPIO 18 - Servo 1
 GPIO 23 - Servo 2
+GPIO 17 - Servo kamera
 
 GPIO 4 - Sıcaklık Sensörü 1-2
