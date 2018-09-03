@@ -62,7 +62,7 @@ pi1.set_PWM_dutycycle(m1en,0)
 pi1.set_mode(m2in1,gpio.OUTPUT)
 pi1.set_mode(m2in2,gpio.OUTPUT)
 
-pi1.write(m2in1,)1)
+pi1.write(m2in1,1)
 pi1.write(m2in2,0)
 
 pi1.set_mode(m2en,gpio.OUTPUT)
