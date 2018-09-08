@@ -5,7 +5,7 @@ try:
 except ImportError:
     import ConfigParser as configparser
 
-pi1 = gpio.pi("169.254.160.93")#MotorPi
+pi1 = gpio.pi("169.254.38.252")#MotorPi
 if not pi1.connected:
     print ("Pi1 Not Connected")
 
@@ -55,18 +55,18 @@ pi1.write(m1in1,1)
 pi1.write(m1in2,0)
 
 pi1.set_mode(m1en,gpio.OUTPUT)
-pi1.set_PWM_range(m1en,1000)
+pi1.set_PWM_range(m1en,100)
 pi1.set_PWM_dutycycle(m1en,0)
 
 #Motor2
 pi1.set_mode(m2in1,gpio.OUTPUT)
 pi1.set_mode(m2in2,gpio.OUTPUT)
 
-pi1.write(m2in1,)1)
+pi1.write(m2in1,1)
 pi1.write(m2in2,0)
 
 pi1.set_mode(m2en,gpio.OUTPUT)
-pi1.set_PWM_range(m2en,1000)
+pi1.set_PWM_range(m2en,100)
 pi1.set_PWM_dutycycle(m2en,0)
 
 #Motor3
@@ -77,7 +77,7 @@ pi1.write(m3in1,1)
 pi1.write(m3in2,0)
 
 pi1.set_mode(m3en,gpio.OUTPUT)
-pi1.set_PWM_range(m3en,1000)
+pi1.set_PWM_range(m3en,100)
 pi1.set_PWM_dutycycle(m3en,0)
 
 #Motor4
@@ -88,7 +88,7 @@ pi1.write(m4in1,1)
 pi1.write(m4in2,0)
 
 pi1.set_mode(m4en,gpio.OUTPUT)
-pi1.set_PWM_range(m4en,1000)
+pi1.set_PWM_range(m4en,100)
 pi1.set_PWM_dutycycle(m4en,0)
 
 #Motor5
@@ -99,7 +99,7 @@ pi1.write(m5in1,1)
 pi1.write(m5in2,0)
 
 pi1.set_mode(m5en,gpio.OUTPUT)
-pi1.set_PWM_range(m5en,1000)
+pi1.set_PWM_range(m5en,100)
 pi1.set_PWM_dutycycle(m5en,0)
 
 #Motor6
@@ -110,7 +110,7 @@ pi1.write(m6in1,1)
 pi1.write(m6in2,0)
 
 pi1.set_mode(m6en,gpio.OUTPUT)
-pi1.set_PWM_range(m6en,1000)
+pi1.set_PWM_range(m6en,100)
 pi1.set_PWM_dutycycle(m6en,0)
 
 #FIXME: SAG VE SOL SERVO PİNLERİNİ TANIMLA
@@ -125,12 +125,12 @@ pi1.set_PWM_dutycycle(m6en,0)
 
 
 def ManSet(m1,m2,m3,m4,m5,m6):
-    m1=int(m1)*20
-    m2=int(m2)*20
-    m3=int(m3)*20
-    m4=int(m4)*20
-    m5=int(m5)*20
-    m6=int(m6)*20
+    m1=int(m1)
+    m2=int(m2)
+    m3=int(m3)
+    m4=int(m4)
+    m5=int(m5)
+    m6=int(m6)
 
     if m1 != 999:
         pi1.set_PWM_dutycycle(m1en,m1)
@@ -173,7 +173,7 @@ def reset():
     pi1.write(m1in2,0)
 
     pi1.set_mode(m1en,gpio.OUTPUT)
-    pi1.set_PWM_range(m1en,2000)
+    pi1.set_PWM_range(m1en,100)
     pi1.set_PWM_dutycycle(m1en,0)
 
     #Motor2
@@ -184,7 +184,7 @@ def reset():
     pi1.write(m2in2,0)
 
     pi1.set_mode(m2en,gpio.OUTPUT)
-    pi1.set_PWM_range(m2en,2000)
+    pi1.set_PWM_range(m2en,100)
     pi1.set_PWM_dutycycle(m2en,0)
 
     #Motor3
@@ -195,7 +195,7 @@ def reset():
     pi1.write(m3in2,0)
 
     pi1.set_mode(m3en,gpio.OUTPUT)
-    pi1.set_PWM_range(m3en,2000)
+    pi1.set_PWM_range(m3en,100)
     pi1.set_PWM_dutycycle(m3en,0)
 
     #Motor4
@@ -206,7 +206,7 @@ def reset():
     pi1.write(m4in2,0)
 
     pi1.set_mode(m4en,gpio.OUTPUT)
-    pi1.set_PWM_range(m4en,2000)
+    pi1.set_PWM_range(m4en,100)
     pi1.set_PWM_dutycycle(m4en,0)
 
     #Motor5
@@ -217,7 +217,7 @@ def reset():
     pi1.write(m5in2,0)
 
     pi1.set_mode(m5en,gpio.OUTPUT)
-    pi1.set_PWM_range(m5en,2000)
+    pi1.set_PWM_range(m5en,100)
     pi1.set_PWM_dutycycle(m5en,0)
 
     #Motor6
@@ -228,7 +228,7 @@ def reset():
     pi1.write(m6in2,0)
 
     pi1.set_mode(m6en,gpio.OUTPUT)
-    pi1.set_PWM_range(m6en,2000)
+    pi1.set_PWM_range(m6en,100)
     pi1.set_PWM_dutycycle(m6en,0)
 
     #FIXME: SERVOLARSIN SET'I EKLENECEK
