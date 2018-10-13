@@ -1,6 +1,10 @@
 import os
 import glob
 import time
+from flask import Flask,render_template,request
+
+app = Flask(__name__)
+
  # GPIO 4 
  # tek sensör için kullanılıyor
 os.system('modprobe w1-gpio')
@@ -28,6 +32,12 @@ def read_temp():
         temp_f = temp_c * 9.0 / 5.0 + 32.0
         return temp_c, temp_f
 	
+@app.route("/", methods = ["GET","POST"])  # yani kök dizinde ise index() fonksiyonunu çalıştır
+def index():
+    return (temp_c) #index.html 'yi açar
+    
+
+
 while True:
 	print(read_temp())	
 time.sleep(1)

@@ -1,8 +1,5 @@
 #!/usr/bin/python
-# This file is: /usr/share/cacti/site/scripts/flow_temps.py
-# http://www.reuk.co.uk/wordpress/raspberry-pi/connect-multiple-temperature-sensors-with-raspberry-pi/
-# https://pimylifeup.com/raspberry-pi-temperature-sensor/
-# https://www.youtube.com/watch?v=ZnJ7uOK4nYg (şarkı koda özel)
+
 # GPIO 4 kullanılıyor
 
 import os, glob, time, sys, datetime
